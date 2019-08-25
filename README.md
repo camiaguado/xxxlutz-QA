@@ -3,6 +3,11 @@
 
 You can find the tests specifications on features.BDD document
 
+### Things to improve:
+Use data- * attributes to provide context to your selectors and insulate them from CSS or JS changes.
+
+Create Page Object Model for enhancing test maintenance and reducing code duplication
+
 ## DOCUMENT 2
 
 1. One of the things that attracted my attention is that it is an International company with offices in Barcelona, which is where I would like to live.
