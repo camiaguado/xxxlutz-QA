@@ -1,0 +1,129 @@
+Feature: Searchbar
+Scenario 1: Search for a name
+Given I am on Vardagsrum category 
+When I type Hylla on the search bar
+And I press enter
+Then all the products displayed on the list of products should contain hylla on the title
+
+Scenario 2: Non results
+Given I am on Vardagsrum category 
+When I type „dhskasdajsdndaj“ on the search bar
+And I press enter
+Then no products are displayed and this message apears Inga resultat hittades för din sökning efter „dhskasdajsdndaj“
+
+
+Feature: Load more
+
+Scenario 1: Load More button
+Given I am on Vardagsrum category 
+When I drop down 15 lines of products
+And I click on Ladda mer button
+Then it should load 15 lines more of products
+
+Scenario 2: Load More no visible
+Given I am on Vardagsrum category 
+And Beldomo Style brand have 3 products
+When I Click on Marke filter
+And I select Beldomo Style
+Then the load button should not be visible
+
+Fature: Products on the list
+
+Scenario 1: Shadow effect on mouse hover
+Given I am on Vardagsrum category
+When I do mouseover on a product of the list
+Then it should do a shadow effect on this products
+
+Scenario 2: Carousel images
+Given I am on Vardagsrum category
+And Hemmabiosofa have more than 1 image
+When I do mouseover on Hemmabiosofa product
+And I click on the arrow button 
+Then the image should change and I can navigate around al the images 
+
+Scenario 3: Promocional price
+Given I am on Vardagsrum category
+And Soffbord product have a promotional price seted
+Then the original price should use strikethrough effect
+And the new price should apears in red color
+
+Scenario 4: Normal price
+Given I am on Vardagsrum category
+And Knosol product has not promotional price
+Then the original price should apears in black color
+
+Scenario 4: Click on product
+Given I am on Vardagsrum category
+And I click on any product of the list
+Then it should redirect to the product page
+
+
+
+Feature: Filters 
+
+Scenario 1: One filter
+Given I am on Vardagsrum category 
+When I expand Fler kriterier dropdown
+And I click on Best Price
+Then the Best Price tag should apears on the top of the list
+And the quantity of products on the list should be the same displayed on the top of the list 
+
+Scenario 2: More than one filter
+Given I am on Vardagsrum category 
+When I expand Fler kriterier dropdown 
+And I click on Best Price
+And I expand Farg dropdown
+And I click on Vit
+Then the tag <tag> should apears on the top of the list
+
+ |        tag           |
+ |  Best Price          |
+ |  Vit                 |
+ |  Ta bort alla filter |
+
+Scenario 3: Disabled filters options
+Given I am on Vardagsrum category 
+And Nyhet does not have red products
+When I expand Fler kriterier dropdown 
+And I click on Nyhet
+And I expand Farg dropdown
+Then rod color is disable and I am not able to click on it
+
+Scenario 4: Disabled filters fields
+ Given I am on Vardagsrum category
+ And there are not products with price between 99kr and 100kr and multicolor
+ And I have multicolor filer aplied
+ When I Click on Price dropdown
+ And I enter 99kr as min price
+ And I enter 100kr as max price
+ Then Fler Kriterier and Mark
+
+Scenario 5: View all the filters options
+Given I am on Vardagsrum category 
+When I click on Visa Allt dropdown
+Then <filter field> should be visible
+ 
+ |   filter field   |
+ |  Fler kriterier  |
+ |  Farg            |
+ |  Marke           |
+ |  Pris            |
+ |  Bredd           |
+ |  Djup            | 
+ |  Hojd            | 
+
+
+
+Scenario 6: Delete all filters
+Given I am on Vardagsrum category 
+And I have more than 1 filter selected
+When I click on Ta bort alla filter
+Then all filters should clear and no filters tags should be displayed
+
+
+Scenario 7: Brand filter
+Given I am on Vardagsrum category 
+When I click on Marke 
+And I select Linea Natura mark
+Then the Linea Natura header image should be displayed above products
+And the products displayed are products of Linea Natura brand
